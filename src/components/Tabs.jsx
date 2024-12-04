@@ -43,7 +43,7 @@ export default function Tabs({weather}) {
                     ),
                 }}
             >
-                {() => <UpcomingWeather weather={weather.list} />}
+                {() => <UpcomingWeather weatherData={weather.list} />}
             </Tab.Screen>
             <Tab.Screen 
                 name={'City'} 

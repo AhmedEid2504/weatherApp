@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-    Text, 
     SafeAreaView,
     StyleSheet,
     FlatList,
@@ -8,54 +7,15 @@ import {
 } from 'react-native';
 import ListItem from '../components/ListItem';
 
-const DATA = [
-    {
-        dt_txt: '2023-02-18 15:00:00',
-        main:{
-            temp_max: 12.55,
-            temp_min: 10.55,
-        },
-        weather: [
-            {
-                main: 'Rain',
-            }
-        ]
-    },
-    {
-        dt_txt: '2023-02-18 18:00:00',
-        main:{
-            temp_max: 14.55,
-            temp_min: 12.55,
-        },
-        weather: [
-            {
-                main: 'Clear',
-            }
-        ]
-    },
-    {
-        dt_txt: '2023-02-18 21:00:00',
-        main:{
-            temp_max: 10.55,
-            temp_min: 8.55,
-        },
-        weather: [
-            {
-                main: 'Clouds',
-            }
-        ]
-    },
-]
-
-const UpcomingWeather = () => {
+const UpcomingWeather = ({ weatherData }) => {
     const renderItem = ({ item }) => (
         <ListItem
+            condition={item.weather[0].main}
             dt_txt={item.dt_txt}
             min={item.main.temp_min}
             max={item.main.temp_max}
-            condition={item.weather[0].main}
         />
-    );
+    )
 
     const { container, image} = styles;
     return (
@@ -64,9 +24,8 @@ const UpcomingWeather = () => {
                 source={require('../../assets/clouds.jpg')}
                 style={image}
             >
-                <Text>Upcoming Weather</Text>
                 <FlatList
-                    data={DATA}
+                    data={weatherData}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.dt_txt}
                 />
