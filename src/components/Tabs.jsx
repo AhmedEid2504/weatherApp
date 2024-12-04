@@ -4,12 +4,10 @@ import UpcomingWeather from "../screens/UpcomingWeather";
 import CurrentWeather from "../screens/CurrentWeather";
 import City from "../screens/City";
 import { Feather } from '@expo/vector-icons';
-import { weatherType } from '../utilities/weatherType';
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs({weather}) {
-
     return (
         <Tab.Navigator
             screenOptions={{

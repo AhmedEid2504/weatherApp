@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/components/Tabs';
 import { useGetWeather } from './src/hooks/useGetWeather';
 import Loading from './src/components/Loading';
 
 const App= () => {
-  const { loading, weather } = useGetWeather();
+  const { loading, error, weather } = useGetWeather();
 
-  if (loading) {
-    return <Loading />;
+  if (weather && weather.list && !loading) {
+    return (
+      <NavigationContainer>
+        <Tabs weather={weather} />
+      </NavigationContainer>
+    )
   }
 
   return (
-    <NavigationContainer>
-      <Tabs 
-        weather={weather}
-      />
-    </NavigationContainer>
+    <View style={styles.container}>
+        {error ? (
+          <ErrorItem />
+        ) : (
+          <Loading />
+        )}
+    </View>
   );
 }
 

@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     content: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        width: '100%',
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
 });
