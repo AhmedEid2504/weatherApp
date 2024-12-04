@@ -27,8 +27,8 @@ const CurrentWeather = ({weatherData}) => {
                 <Text style={tempStyle}>{temp}</Text>
                 <Text style={feels}>Feels like {feels_like}</Text>
                 <View style={highLowWrapper}>
-                    <Text style={highLow}>High: {temp_max}</Text>
-                    <Text style={highLow}>Low: {temp_min}</Text>
+                    <Text style={highLow}>High: {temp_max}°</Text>
+                    <Text style={highLow}>Low: {temp_min}°</Text>
                 </View>
             </View>
             <View style={bodyWrapper}>
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     },
     highLowWrapper: {
         flexDirection: 'row',
+        gap: 10,
     },
     highLow: {
         color: 'black',

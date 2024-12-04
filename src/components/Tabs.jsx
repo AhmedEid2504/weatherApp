@@ -4,10 +4,12 @@ import UpcomingWeather from "../screens/UpcomingWeather";
 import CurrentWeather from "../screens/CurrentWeather";
 import City from "../screens/City";
 import { Feather } from '@expo/vector-icons';
+import { weatherType } from '../utilities/weatherType';
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs({weather}) {
+
     return (
         <Tab.Navigator
             screenOptions={{
@@ -47,13 +49,14 @@ export default function Tabs({weather}) {
             </Tab.Screen>
             <Tab.Screen 
                 name={'City'} 
-                component={City} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                     <Feather name="map-pin" size={24} color={ focused ? 'black' : 'lightblue'} />
                     ),
                 }}
-            />
+            >
+                {() => <City weatherData={weather.city} />}
+            </Tab.Screen>
         </Tab.Navigator>
     )
 }

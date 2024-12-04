@@ -7,7 +7,7 @@ import moment from 'moment';
 const Item = (props) => {
     const { dt_txt, min, max, condition } = props
     const { item, date, temp, dateTextWrapper } = styles
-    console.log(weatherType[condition].backgroundColor);
+    
     return (
         <View style={[item,  {backgroundColor: weatherType[condition].backgroundColor}]}>
             <Feather name={weatherType[condition].icon} size={50} color="white" />
