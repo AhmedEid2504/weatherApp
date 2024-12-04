@@ -1,15 +1,12 @@
 import React from 'react';
 import { 
-    View, 
     Text, 
     SafeAreaView,
     StyleSheet,
     FlatList,
     ImageBackground
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import ListItem from '../components/ListItem';
-import { StatusBar } from 'expo-status-bar';
 
 const DATA = [
     {

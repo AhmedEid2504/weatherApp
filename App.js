@@ -1,49 +1,33 @@
-import UpcomingWeather from './src/screens/UpcomingWeather';
-import CurrentWeather from './src/screens/CurrentWeather';
-import City from './src/screens/City';
+import React, { useState, useEffect } from 'react';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather } from '@expo/vector-icons';
+import Tabs from './src/components/Tabs';
 
-const Tab = createBottomTabNavigator();
 
-export default function App() {
+const App= () => {
+  const [loading, setLoading] = useState(false);
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: 'black',
-          tabBarInactiveTintColor: 'gray',
-        }}
-      >
-        <Tab.Screen 
-            name={'Current'} 
-            component={CurrentWeather} 
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <Feather name="sun" size={24} color={ focused ? 'black' : 'grey'} />
-              ),
-            }}
-          />
-        <Tab.Screen 
-          name={'Upcoming'} 
-          component={UpcomingWeather} 
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <Feather name="calendar" size={24} color={ focused ? 'black' : 'grey'} />
-            ),
-          }}
-        />
-        <Tab.Screen 
-          name={'City'} 
-          component={City} 
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <Feather name="map-pin" size={25} color={ focused ? 'black' : 'grey'} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
+      <Tabs />
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export default App;
