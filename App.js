@@ -6,8 +6,7 @@ import { useGetWeather } from './src/hooks/useGetWeather';
 import Loading from './src/components/Loading';
 
 const App= () => {
-  const { loading, error, weather } = useGetWeather();
-  console.log(loading, error, weather)
+  const { loading, weather } = useGetWeather();
 
   if (loading) {
     return <Loading />;
@@ -15,7 +14,9 @@ const App= () => {
 
   return (
     <NavigationContainer>
-      <Tabs />
+      <Tabs 
+        weather={weather}
+      />
     </NavigationContainer>
   );
 }
